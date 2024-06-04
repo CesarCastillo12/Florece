@@ -1,0 +1,70 @@
+/* Estilos para el formulario */
+.formulario-postulacion-container {
+    width: 100%;
+    max-width: 600px; /* Ajusta el ancho máximo según sea necesario */
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario-postulacion-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.formulario-postulacion {
+    width: 100%;
+}
+
+.formulario-postulacion label {
+    width: calc(50% - 10px); /* 50% menos los márgenes */
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.formulario-postulacion input,
+.formulario-postulacion button {
+    width: calc(50% - 10px); /* 50% menos los márgenes */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 11px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.formulario-postulacion input:focus,
+.formulario-postulacion button:focus {
+    border-color: #3375ec;
+    outline: none;
+}
+
+.formulario-postulacion .btn-container {
+    width: 100%;
+    text-align: center;
+}
+
+.formulario-postulacion button {
+    background-color: #3375ec;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-postulacion button:hover {
+    background-color: #45a049;
+}

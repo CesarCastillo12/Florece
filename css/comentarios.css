@@ -1,0 +1,105 @@
+/* Estilos para el formulario de comentarios */
+.formulario-comentarios-section {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.formulario-comentarios-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.formulario-comentarios h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.formulario-comentarios input[type="text"],
+.formulario-comentarios textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.formulario-comentarios button {
+    background-color: #3375ec;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-comentarios button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para la lista de comentarios */
+.comentarios-lista-section {
+    background-color: #f9f9f9;
+    padding: 0px 0; 
+    text-align: center;
+}
+
+.comentarios-lista-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.comentarios-lista h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.comentario {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.comentario h4 {
+    color: #3375ec;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.comentario p {
+    color: #555;
+    font-size: 16px;
+}
+
+.fecha {
+    text-align: right;
+    font-size: 12px; 
+    color: #888;
+    margin-top: -27px; /* Margen superior */
+}
+
+.textarea-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.textarea-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: none; /* Esto evita que el textarea sea redimensionable por el usuario */
+}

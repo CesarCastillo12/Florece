@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
@@ -10,6 +14,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mapa.css">
     <style>
     
     .ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
@@ -37,24 +42,32 @@
                 <!-- RD Navbar Toggle-->
                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                 <!-- RD Navbar Brand-->
-                <div class="rd-navbar-brand"><a class="brand" href="index.html"><img src="images/logoescuela.png" alt="" width="148" height="31"/></a>
+                <div class="rd-navbar-brand"><a class="brand" href="index.php"><img src="images/logoescuela.png" alt="" width="148" height="31"/></a>
                 </div>
               </div>
               <div class="rd-navbar-nav-wrap">
                 <!-- RD Navbar Nav-->
                 <ul class="rd-navbar-nav">
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Home</a>
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="index.php">Inicio</a>
                   </li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="nosotros.html">Nosotros</a>
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="nosotros.php">Nosotros</a>
                   </li>
-                  <li class="rd-nav-item active"><a class="rd-nav-link" href="programa.html">Programa</a>
+                  <li class="rd-nav-item active"><a class="rd-nav-link" href="programa.php">Programa</a>
                   </li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="servieventos.html">Servicios y Eventos</a>
-                  </li>
-                </ul>
-              </div>
-             <!-- <div class="rd-navbar-element"><a class="button button-sm button-header button-winona" href="#">Sign In</a>
-              </div>-->
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="servieventos.php">Servicios y Eventos</a>
+                  <li class="rd-nav-item">
+                                    <?php
+                                    if (isset($_SESSION['usuario'])) {
+                                        // Si el usuario ha iniciado sesión, mostrar el botón de cerrar sesión
+                                        echo '<a class="rd-nav-link" href="logout.php">Cerrar Sesión</a>';
+                                    } else {
+                                        // Si el usuario no ha iniciado sesión, mostrar el botón de iniciar sesión
+                                        echo '<a class="rd-nav-link" href="login.php">Iniciar Sesión</a>';
+                                    }
+                                    ?>
+                                </li>
+                            </ul>
+                        </div>
               <div class="rd-navbar-dummy"></div>
               <!-- Search Form-->
               <div class="search-container">
@@ -78,7 +91,7 @@
         <div class="breadcrumbs-custom-aside">
           <div class="container">
             <ul class="breadcrumbs-custom-path">
-              <li><a href="index.html">Home</a></li>
+              <li><a href="index.php">Inicio</a></li>
               <li class="active">Nuestros Programas</li>
             </ul>
           </div>
@@ -173,30 +186,88 @@
         <div class="footer-classic-main">
           <div class="container">
             <div class="row row-50 justify-content-lg-between">
-              <div class="col-sm-7 col-lg-3 col-xl-2"><a class="brand" href="index.html"><img src="images/logoescuela.png" alt="" width="148" height="31"/></a>
+              <div class="col-sm-7 col-lg-3 col-xl-2"><a class="brand" href="index.php"><img src="images/logoescuela.png" alt="" width="148" height="31"/></a>
                 <p><span style="max-width: 250px;">"¡Cultivando mentes brillantes para un mañana floreciente!"</span></p><!--<a class="button button-sm button-default-outline button-winona" href="#">Sign In</a>-->
                     
               </div>
               <div class="col-sm-5 col-lg-3 col-xl-2">
-                <h4 class="footer-classic-title">Enlaces</h4>
-                <ul class="list footer-classic-list">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="nosotros.html">Nostros</a></li>
-                  <li><a href="servieventos.html">Servicios y Eventos</a></li>
+        <h4 class="footer-classic-title">Enlaces</h4>
+        <ul class="list footer-classic-list">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="nosotros.php">Nosotros</a></li>
+            <li><a href="servieventos.php">Servicios y Eventos</a></li>
+            <li><a href="#" id="mapa-del-sitio">Mapa del Sitio</a></li>
+        </ul>
+    </div>
+
+    <div id="popup-overlay" class="popup-overlay"></div>
+    <div id="popup" class="popup">
+        <span class="close-btn" id="close-popup">&times;</span>
+        <h2 class="mapa">Mapa del Sitio</h2>
+        <br>
+        <ul>
+            <li class="titulo">Inicio</li>
+            <li class="titulo">Nosotros
+                <ul>
+                    <li>-Equipo</li>
+                    <li>-Características</li>
+                    <li>-Únete a Nosotros</li>
                 </ul>
-              </div>
-              <!--<div class="col-sm-7 col-lg-5 col-xl-3">
-                <h4 class="footer-classic-title">Enlaces rapidos</h4>
-                <ul class="list footer-classic-list footer-classic-list_2-cols">
-                  <li><a href="#">Sign Up</a></li>
-                  <li><a href="#">News</a></li>
-                  <li><a href="#">Our Partners</a></li>
-                  <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Services</a></li>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="contact-us.html">Contacts</a></li>
+            </li>
+            <li class="titulo">Programa
+                <ul>
+                    <li>-Clases</li>
+                    <li>-Actividades Extracurriculares</li>
                 </ul>
-              </div>-->
+            </li>
+            <li class="titulo">Servicios y Eventos
+                <ul>
+                    <li>-Servicios</li>
+                    <li>-Eventos</li>
+                </ul>
+            </li>
+            <li class="titulo">Formularios
+                <ul>
+                    <li>-Formulario de Correo para Postulación</li>
+                    <li>-Formulario de Comentarios</li>
+                </ul>
+            </li>
+            <li class="titulo">Usuario
+                <ul>
+                    <li>-Inicio de Sesión</li>
+                    <li>-Registro</li>
+                    <li>-Recuperar contraseña</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Obtener elementos del DOM
+        const mapaDelSitio = document.getElementById('mapa-del-sitio');
+        const popup = document.getElementById('popup');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const closePopup = document.getElementById('close-popup');
+
+        // Mostrar la ventana emergente
+        mapaDelSitio.addEventListener('click', function(event) {
+            event.preventDefault();
+            popup.style.display = 'block';
+            popupOverlay.style.display = 'block';
+        });
+
+        // Ocultar la ventana emergente
+        closePopup.addEventListener('click', function() {
+            popup.style.display = 'none';
+            popupOverlay.style.display = 'none';
+        });
+
+        // Ocultar la ventana emergente al hacer clic fuera de ella
+        popupOverlay.addEventListener('click', function() {
+            popup.style.display = 'none';
+            popupOverlay.style.display = 'none';
+        });
+    </script>
               <div class="col-sm-5 col-lg-9 col-xl-2">
                 <h4 class="footer-classic-title">Redes sociales</h4>
                 <div class="row row-20 row-sm-35">
@@ -220,8 +291,10 @@
         </div>
         <div class="footer-classic-aside">
           <div class="container">
-            <!--<p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Businet</span>. All Rights Reserved. Design by <a href="https://www.templatemonster.com">TemplateMonster</a></p>-->
-          </div>
+          <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Businet</span>
+123 Spring Street, Bloomington, IN 47403,  
++1 800 603 6035,   
+info@escuelaflorece.org</a></p>          </div>
         </div>
       </footer>
     </div>
